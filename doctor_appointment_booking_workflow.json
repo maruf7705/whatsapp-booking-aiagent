@@ -1,0 +1,64 @@
+{
+    "name": "Doctor Appointment Booking Automation",
+    "nodes": [
+        {
+            "parameters": {
+                "authentication": "oAuth2",
+                "calendar": "Primary",
+                "start": "={{$json[\"appointment_start\"]}}",
+                "end": "={{$json[\"appointment_end\"]}}",
+                "summary": "={{$json[\"patient_name\"]}} - Doctor Appointment",
+                "description": "={{$json[\"description\"]}}",
+                "conferenceDataVersion": 1,
+                "attendees": [
+                    {
+                        "email": "={{$json[\"patient_email\"]}}"
+                    }
+                ]
+            },
+            "id": "google_calendar_create",
+            "name": "Create Google Calendar Event",
+            "type": "n8n-nodes-base.googleCalendar",
+            "typeVersion": 1,
+            "position": [
+                450,
+                300
+            ],
+            "credentials": {
+                "googleCalendarOAuth2Api": {
+                    "id": "YOUR_GOOGLE_OAUTH2_CREDENTIAL_ID",
+                    "name": "Google Calendar OAuth2"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "functionCode": "\n                return [\n                    {\n                        json: {\n                            patient_name: \"John Doe\",\n                            patient_email: \"johndoe@example.com\",\n                            appointment_start: \"2025-04-15T10:00:00.000Z\",\n                            appointment_end: \"2025-04-15T10:30:00.000Z\",\n                            description: \"Routine check-up\"\n                        }\n                    }\n                ];\n                "
+            },
+            "id": "manual_input",
+            "name": "Manual Input",
+            "type": "n8n-nodes-base.function",
+            "typeVersion": 1,
+            "position": [
+                250,
+                300
+            ]
+        }
+    ],
+    "connections": {
+        "Manual Input": {
+            "main": [
+                [
+                    {
+                        "node": "Create Google Calendar Event",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "active": false,
+    "settings": {},
+    "id": "1"
+}
