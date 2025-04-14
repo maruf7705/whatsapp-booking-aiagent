@@ -2,7 +2,7 @@
 
 A fully automated AI agent for booking doctor appointments using WhatsApp, GPT, Airtable, Google Meet, and email confirmations — built with n8n.
 
-<img> ![image](https://github.com/user-attachments/assets/9906a467-f90c-4637-9e59-b6833265178b) </img>
+
 
 ---
 
@@ -52,7 +52,7 @@ A fully automated AI agent for booking doctor appointments using WhatsApp, GPT, 
 
 ## 📸 Preview
 
-<img src="assets/preview.png" width="100%" />
+<img> ![image](https://github.com/user-attachments/assets/9906a467-f90c-4637-9e59-b6833265178b) </img>
 
 ---
 
